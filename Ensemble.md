@@ -6,6 +6,7 @@ Individual decision trees are weak learners, and random forest makes them strong
 ---
 
 ## 📈 Gradient Boosting Machine
+Gradient Boosting Machine (GBM) is an ensemble learning method that is based on sequential tree models that combine weak learners to generate a strong leaner. Unlike random forest where individual trees are built independently, GBM trains mo
 **XGBoost**
 **LightGBM**
 **CatBoost**
