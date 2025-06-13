@@ -5,7 +5,7 @@ Entire data is split into k subsets. The model is trained k times, each time usi
 
 
 ## Bootstrap Aggregating: Bagging
-The main idea is sampling with replacement, addressing the limitation of k-fold data split in generating enough subsets. It estimates the distribution of the original sample by generating statistic from  bootstrapped samples that have slightly different noise from each other. Due to its nature of sampling with replacement, it is both possible for an instance to be selected multiple times in different bootstrapped sample and not selected at all. Approximately, 2/3 of instances are sampled more than one time, and the remaining 1/3 of instances are not selected in any sample. The collection of instances that are sampled 0 times is called **out of bag (OOB) sample**. These OOB samples serve as built-in validation data. This enhances reliability of validation of the model. Bagging is especially efficient for complex models with low bias and high variance (e.g. decision tree, NN, SVM), but can be used for any type of learning methods.
+The main idea is sampling with replacement, addressing the limitation of k-fold data split in generating enough subsets. It estimates the distribution of the original sample by generating a statistic from  bootstrapped samples that have slightly different noise from each other. Due to its nature of sampling with replacement, it is both possible for an instance to be selected multiple times in different bootstrapped samples and not selected at all. Approximately, 2/3 of instances are sampled more than one time, and the remaining 1/3 of instances are not selected in any sample. The collection of the instances that are sampled 0 times is called **out of bag (OOB) sample**. These OOB samples serve as built-in validation data. It enhances reliability of validation of the model by utilizing the entire dataset in either training or testing. Bagging is especially efficient for complex models with low bias and high variance (e.g. decision tree, NN, SVM), but can be used for any type of learning methods.
 
 - Bagging results aggregating 
 for classification
@@ -17,9 +17,17 @@ for classification
 
 ---
 ## 🌲 Random Forest
-Random Forest is decision tree based bagging learning. The core concept of an ensemble method is to increase the diversity of ensemble members. Random forest builds many decision trees (bagging; sampling with replacement) by randomply selecting predictor variables. Bagging is explained above. In any bootstrapped sample with n number of features, features are randomly selected to split trees. This steps up the diversity on top of bagging method, as splits with randomply selected predictors generate more various outputs, compared to trees built with all features. This strategy improves prediction accuracy, because it focuses on overall strength of the predictors rather than individual power.
+Random Forest is a decision tree based bagging learning. The core concept of an ensemble method is to increase the diversity of ensemble members. Random forest builds many decision trees (bagging; sampling with replacement) by randomply selecting predictor variables. Bagging is explained above. In any bootstrapped sample with n number of features, features are randomly selected to split trees. This increases the diversity one step further on top of bagging method, as splits with randomply selected predictors generate more various outputs, compared to trees built with all features. This strategy improves prediction accuracy, because it focuses on overall strength of the predictors rather than the power of individual features.
 
 Random forest is unique in that it calculates **variable importance**.
+- How does it calculate variable importance?
+  Let's say one of the features, Xi is being tested for its importance.
+  * Step 1. compute the OBB error (ei) for Xi in the original dataset
+  * step 2. perform permutation (rearrange the order of values of Xi), then compute the OBB error (pi) for Xi the permuted dataset
+  * step 3. compute the variable importance based on the mean and standard deviation of (pi - ei, as pi > ei since permuted dataset generates higher error) over all trees in the population
+     - if the Xi's importance is low (meaning Xi was never selected in both datasets of step 1 and step 2 because of unimportance), the value (pi - ei) would be 0.
+     - the higher the Xi's importance is (meaning Xi was selected many times in both datasets of step 1 and step 2 because of importance), the value (pi - ei) would be larger.
+     - across the value (pi - ei)
 
 It aggregates predictions of each tree to make a final decision. In **random forest classifier**, each tree votes for a class label, and the final decision is made by the majority vote. In **random forest regressor**, the prediction is made with the averaged value across all trees.
 
