@@ -23,11 +23,11 @@ Random forest is unique in that it calculates **variable importance**.
 - How does it calculate variable importance?
   Let's say one of the features, Xi is being tested for its importance.
   * Step 1. compute the OBB error (ei) for Xi in the original dataset
-  * step 2. perform permutation (rearrange the order of values of Xi), then compute the OBB error (pi) for Xi the permuted dataset
-  * step 3. compute the variable importance based on the mean and standard deviation of (pi - ei, as pi > ei since permuted dataset generates higher error) over all trees in the population
+  * Step 2. perform permutation (rearrange the order of values of Xi), then compute the OBB error (pi) for Xi the permuted dataset
+  * Step 3. compute the variable importance based on the mean and standard deviation of (pi - ei, as pi > ei since permuted dataset generates higher error) over all trees in the population
      - if the Xi's importance is low (meaning Xi was never selected in both datasets of step 1 and step 2 because of unimportance), the value (pi - ei) would be 0.
      - the higher the Xi's importance is (meaning Xi was selected many times in both datasets of step 1 and step 2 because of importance), the value (pi - ei) would be larger.
-     - across the value (pi - ei)
+     - if Xi's importance is higher, the mean of the value (pi - ei) would be higher across all trees, but the standard deviation would be lower.
 
 It aggregates predictions of each tree to make a final decision. In **random forest classifier**, each tree votes for a class label, and the final decision is made by the majority vote. In **random forest regressor**, the prediction is made with the averaged value across all trees.
 
