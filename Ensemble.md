@@ -36,6 +36,7 @@ Individual decision trees are weak learners, and random forest makes them strong
 
 ---
 ## 🧮 AdaBoost
+Boosting: when a model only performs slightly better than random guessing, the model is a **weak learner**. The weak learner could be **boosted** in to arbitrarily accurate strong model. AdaBoost lets the next model to focus on the difficult cases of previous models. Compared to bagging, where multiple learners learn about a topic with slightly different materials at the same time and aggregate the output to determine the final decision, boosting occurs sequentially, focusing to strengthen weak points of each learner in the next step.
 
 --- 
 ## 📈 Gradient Boosting Machine
