@@ -67,7 +67,6 @@ As in random forest, GBM can provide feature importance, in a simpler way:
 
 ![image](https://github.com/user-attachments/assets/de305234-3a3d-4f3c-9612-b5b117037557)
 
-Reference:
-[1]https://medium.com/data-science/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d
-[2] 
+https://medium.com/data-science/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d
+
 
