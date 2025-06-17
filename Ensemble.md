@@ -18,7 +18,7 @@ for classification
 
 ---
 ## 🌲 Random Forest
-Random Forest is a decision tree based bagging learning. The core concept of an ensemble method is to increase the diversity of ensemble members. Random forest builds many decision trees (bagging; sampling with replacement) by randomply selecting predictor variables. Bagging is explained above. In any bootstrapped sample with n number of features, features are randomly selected to split trees. This increases the diversity one step further on top of bagging method, as splits with randomply selected predictors generate more various outputs, compared to trees built with all features. This strategy improves prediction accuracy, because it focuses on overall strength of the predictors rather than the power of individual features.
+Random Forest is a decision tree based bagging learning. The core concept of an ensemble method is to increase the diversity of ensemble members. Random forest builds many decision trees (bagging; sampling with replacement) by randomply selecting predictor variables. Bagging is explained above. In any bootstrapped sample with n number of features, features are randomly selected to split trees. This increases the diversity one step further on top of bagging method, as splits with randomply selected predictors generate more various outputs, compared to trees built with all features. This strategy improves prediction accuracy, because it focuses on overall strength of the predictors rather than individual features.
 
 Random forest is unique in that it calculates **variable importance**.
 - How does it calculate variable importance?
@@ -32,19 +32,33 @@ Random forest is unique in that it calculates **variable importance**.
 
 It aggregates predictions of each tree to make a final decision. In **random forest classifier**, each tree votes for a class label, and the final decision is made by the majority vote. In **random forest regressor**, the prediction is made with the averaged value across all trees.
 
-Individual decision trees are weak learners, and random forest makes them stronger by combining their predictions. Therefore, the variance is reduced and the results are generalized better with random forest.
+Individual decision trees are weak learners, and random forest makes them stronger by combining their predictions. Therefore, the variance is reduced and the results are generalized better.
 
 ---
 ## 🧮 AdaBoost
 Boosting: when a model only performs slightly better than random guessing, the model is a **weak learner**. The weak learner could be **boosted** in to arbitrarily accurate strong model. AdaBoost lets the next model to focus on the difficult cases of previous models. Compared to bagging, where multiple learners learn about a topic with slightly different materials at the same time and aggregate the output to determine the final decision, boosting occurs sequentially, focusing to strengthen weak points of each learner in the next step.
 
+In AdaBoost, "shortcomings" are identified by high-weight data points.
+
 --- 
 ## 📈 Gradient Boosting Machine
-Gradient Boosting Machine (GBM) is an ensemble learning method that is based on sequential tree models that combine weak learners to generate a strong leaner (**Boosting**). Unlike random forest where individual trees are built independently, GBM trains models to correct the errors from the previous trees, using gradient descent. Gradient descent is a concept that minimizes the loss function in each iteration. 
+Gradient Boosting Machine (GBM) is an iterative ensemble learning method that is based on sequential tree models that combine weak learners to generate a strong leaner (**Boosting**). Unlike random forest where individual trees are built independently, GBM trains models to correct the errors from the previous trees, using gradient descent. Gradient descent is a concept that minimizes the loss function in each iteration. 
+
+First, an additive model (ensemble) is fitted in a forward stage-wise manner. In each stage, a weak learner is introduced to compensate the shortcomings of existing weak learners. Both high-weight data points and gradients tell us how to improve the model.
+
+In GBM, "shortcomings" are identified by gradients.
+
+**Regularization** is important as GBM has a high risk of overfitting. Regularization techniques include subsampling, shrinkage, and early stopping.
+
+As in random forest, GBM can provide feature importance, in a simpler way:
+1. Calculate the importance of the variable j in a single tree T by summing the information gain of the variable in all splits of the tree. 
+2. Sum all importances of the variable in individual trees, then divide it by the number of trees to get the importance of variable j.
+   
 
 ---
 
-Extreme Gradient Boosting, **XGBoost**, improves the traditional gradient boosting model's efficiency and scalability by applying regularization, parallelization, and enhanced approximation.
+## 📈 Extreme Gradient Boosting
+**XGBoost**, improves the traditional gradient boosting model's efficiency and scalability by applying regularization, parallelization, and enhanced approximation.
 
 **LightGBM**, developed by Microsoft, has faster and more efficient computation approach than the traditional GBM with its unique optimization technique. Instead of evalutatng every possible split of features which leads to heavy computation in traditional GBM, lightGBM bins feature values into buckets, while maintaining high accuracy. There are two
 **CatBoost**
