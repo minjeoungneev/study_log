@@ -61,8 +61,13 @@ As in random forest, GBM can provide feature importance, in a simpler way:
 **XGBoost**, improves the traditional gradient boosting model's efficiency and scalability by applying regularization, parallelization, and enhanced approximation.
 
 **LightGBM**, developed by Microsoft, has faster and more efficient computation approach than the traditional GBM with its unique optimization technique. Instead of evalutatng every possible split of features which leads to heavy computation in traditional GBM, lightGBM bins feature values into buckets, while maintaining high accuracy. There are two
+
 **CatBoost**
 
 
+![image](https://github.com/user-attachments/assets/de305234-3a3d-4f3c-9612-b5b117037557)
 
+Reference:
+[1]https://medium.com/data-science/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d
+[2] 
 
