@@ -71,6 +71,7 @@ XGBoost can handle missing values by using **Sparsity-Aware Split Finding**, by 
 1. Gradient-based One-Side Sampling (GOSS): focuses on sample instances based on their gradients, prioritizing those with larger gradients. 
 2. Exclusive Feature Bundling (EFB): increases efficiency by bundling features that are exclusive, maintaining performance accuracy.
 
+---
 
 ![image](https://github.com/user-attachments/assets/de305234-3a3d-4f3c-9612-b5b117037557)
 
