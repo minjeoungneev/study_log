@@ -64,6 +64,7 @@ As in random forest, GBM can provide feature importance, in a simpler way:
 
 XGBoost can handle missing values by using **Sparsity-Aware Split Finding**, by setting default direction for missing values, which significantly reduces processing time.
 
+
 ---
 ## 🛠️ Light Gradient Boosting Machine
 **LightGBM**, developed by Microsoft, has faster and more efficient computation approach than the traditional GBM with its unique optimization technique. Instead of evalutatng every possible split of features which leads to heavy computation in traditional GBM, lightGBM bins feature values into buckets, while maintaining high accuracy. There are two main techniques LightGBM utilizes to reduce the number of data instances to scan and to reduce the number of features to scan.
