@@ -18,7 +18,7 @@ for classification
 
 ---
 ## 🌲 Random Forest
-Random Forest is a decision tree based bagging learning. The core concept of an ensemble method is to increase the diversity of ensemble members. Random forest builds many decision trees (bagging; sampling with replacement) by randomply selecting predictor variables. Bagging is explained above. In any bootstrapped sample with n number of features, features are randomly selected to split trees. This increases the diversity one step further on top of bagging method, as splits with randomply selected predictors generate more various outputs, compared to trees built with all features. This strategy improves prediction accuracy, because it focuses on overall strength of the predictors rather than individual features.
+Random Forest is a decision tree based **bagging** learning. The core concept of an ensemble method is to increase the diversity of ensemble members. Random forest builds many decision trees (bagging; sampling with replacement) by randomply selecting predictor variables. Bagging is explained above. In any bootstrapped sample with n number of features, features are randomly selected to split trees. This increases the diversity one step further on top of bagging method, as splits with randomply selected predictors generate more various outputs, compared to trees built with all features. This strategy improves prediction accuracy, because it focuses on overall strength of the predictors rather than individual features.
 
 Random forest is unique in that it calculates **variable importance**.
 - How does it calculate variable importance?
@@ -35,18 +35,18 @@ It aggregates predictions of each tree to make a final decision. In **random for
 Individual decision trees are weak learners, and random forest makes them stronger by combining their predictions. Therefore, the variance is reduced and the results are generalized better.
 
 ---
-## 🧮 AdaBoost
-Boosting: when a model only performs slightly better than random guessing, the model is a **weak learner**. The weak learner could be **boosted** in to arbitrarily accurate strong model. AdaBoost lets the next model to focus on the difficult cases of previous models. Compared to bagging, where multiple learners learn about a topic with slightly different materials at the same time and aggregate the output to determine the final decision, boosting occurs sequentially, focusing to strengthen weak points of each learner in the next step.
+## Boosting
+Boosting: when a model only performs slightly better than random guessing, the model is a **weak learner**. The weak learner could be **boosted** in to arbitrarily accurate strong model. Compared to bagging, where multiple learners learn about a topic with slightly different materials at the same time and aggregate the output to determine the final decision, boosting occurs sequentially.
 
-In AdaBoost, "shortcomings" are identified by high-weight data points.
+---
+## 🧮 AdaBoost
+In AdaBoost, "shortcomings" are identified by high-weight data points. AdaBoost lets the next model to focus on the difficult cases of previous models by assigning larger weights to misclassified data points, focusing to strengthen weak points of each learner in the next step.
 
 --- 
 ## 📈 Gradient Boosting Machine
-Gradient Boosting Machine (GBM) is an iterative ensemble learning method that is based on sequential tree models that combine weak learners to generate a strong leaner (**Boosting**). Unlike random forest where individual trees are built independently, GBM trains models to correct the errors from the previous trees, using gradient descent. Gradient descent is a concept that minimizes the loss function in each iteration. 
+In GBM, "shortcomings" are identified by gradients. Gradient descent is a concept that minimizes the loss function in each iteration. 
 
 First, an additive model (ensemble) is fitted in a forward stage-wise manner. In each stage, a weak learner is introduced to compensate the shortcomings of existing weak learners. Both high-weight data points and gradients tell us how to improve the model.
-
-In GBM, "shortcomings" are identified by gradients.
 
 **Regularization** is important as GBM has a high risk of overfitting. Regularization techniques include subsampling, shrinkage, and early stopping.
 
@@ -58,10 +58,21 @@ As in random forest, GBM can provide feature importance, in a simpler way:
 ---
 
 ## 📈 Extreme Gradient Boosting
-**XGBoost**, improves the traditional gradient boosting model's efficiency and scalability by applying regularization, parallelization, and enhanced approximation.
+**XGBoost**, improves the traditional gradient boosting model's efficiency, scalability, and speed by applying regularization, parallelization, and enhanced approximation. XGBoost enables parallel processing by using the two algorithms.
 
-**LightGBM**, developed by Microsoft, has faster and more efficient computation approach than the traditional GBM with its unique optimization technique. Instead of evalutatng every possible split of features which leads to heavy computation in traditional GBM, lightGBM bins feature values into buckets, while maintaining high accuracy. There are two
+1. Basic greedy algorithm for split finding: can always find the optimal split by observing every possible split point, but can be problematic when the large data cannot be viewed at once; impossible in a distributed setting.
+2. Approximate algorithm (histogram based): spliting sorted data by tree level (global) or node level (local) by buckets (bins), reducing splitting time and increasing efficiency.
 
+XGBoost can handle missing values by using **Sparsity-Aware Split Finding**, by setting default direction for missing values, which significantly reduces processing time.
+
+
+## 📈 Light Gradient Boosting Machine
+**LightGBM**, developed by Microsoft, has faster and more efficient computation approach than the traditional GBM with its unique optimization technique. Instead of evalutatng every possible split of features which leads to heavy computation in traditional GBM, lightGBM bins feature values into buckets, while maintaining high accuracy. There are two main techniques LightGBM utilizes to reduce the number of data instances to scan and to reduce the number of features to scan.
+
+1. Gradient-based One-Side Sampling (GOSS): focuses on sample instances based on their gradients, prioritizing those with larger gradients. 
+2. Exclusive Feature Bundling (EFB): increases efficiency by bundling features that are exclusive, maintaining performance accuracy.
+
+## 📈 Categorical Boosting Machine
 **CatBoost**
 
 
