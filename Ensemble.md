@@ -57,7 +57,7 @@ As in random forest, GBM can provide feature importance, in a simpler way:
 
 ---
 
-## 📈 Extreme Gradient Boosting
+## 🚅 Extreme Gradient Boosting
 **XGBoost**, improves the traditional gradient boosting model's efficiency, scalability, and speed by applying regularization, parallelization, and enhanced approximation. XGBoost enables parallel processing by using the two algorithms.
 
 1. Basic greedy algorithm for split finding: can always find the optimal split by observing every possible split point, but can be problematic when the large data cannot be viewed at once; impossible in a distributed setting.
@@ -66,14 +66,11 @@ As in random forest, GBM can provide feature importance, in a simpler way:
 XGBoost can handle missing values by using **Sparsity-Aware Split Finding**, by setting default direction for missing values, which significantly reduces processing time.
 
 
-## 📈 Light Gradient Boosting Machine
+## 🛠️ Light Gradient Boosting Machine
 **LightGBM**, developed by Microsoft, has faster and more efficient computation approach than the traditional GBM with its unique optimization technique. Instead of evalutatng every possible split of features which leads to heavy computation in traditional GBM, lightGBM bins feature values into buckets, while maintaining high accuracy. There are two main techniques LightGBM utilizes to reduce the number of data instances to scan and to reduce the number of features to scan.
 
 1. Gradient-based One-Side Sampling (GOSS): focuses on sample instances based on their gradients, prioritizing those with larger gradients. 
 2. Exclusive Feature Bundling (EFB): increases efficiency by bundling features that are exclusive, maintaining performance accuracy.
-
-## 📈 Categorical Boosting Machine
-**CatBoost**
 
 
 ![image](https://github.com/user-attachments/assets/de305234-3a3d-4f3c-9612-b5b117037557)
