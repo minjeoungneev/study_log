@@ -1,6 +1,12 @@
 ---
 ## 🔁 K-fold cross validation
-Entire data is split into k subsets. The model is trained k times, each time using k-1 folds for training and the remaining fold for validation. While it allows every data point to be used in both training and validation, it has limitations. One limitation is that the models trained on different folds are not completely independent, affecting the reliability of the model performance. It is also limited by the fixed number of folds, which can reduce granularity of model evaluation.
+K-Fold Cross-Validation splits the dataset into k equal-sized subsets (folds). The model is trained k times, each time using k-1 folds for training and the remaining fold for validation. This process ensures that every data point is used for both training and validation exactly once.
+
+While K-Fold provides a more robust estimate of model performance than a single train-test split, it has some limitations:
+
+The models trained on each fold are not fully independent, since the training sets often overlap. This can slightly affect the variance in performance estimates.
+
+The number of folds (k) is fixed, which can limit granularity or flexibility. For instance, smaller k values may not capture variance well, while larger k values (e.g., leave-one-out) can be computationally expensive and noisy.
 
 ---
 
